@@ -1,0 +1,51 @@
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Policy;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Program2
+    {
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = 7; // Минимальный размер, чтобы уместить 2 внешних контура и центр 3x3
+            char[,] matrix = new char[size, size];
+
+            // Заполняем всю матрицу морем (~) по умолчанию
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    matrix[i, j] = '~';
+                }
+            }
+
+            // Определяем границы центрального квадрата 3x3
+            // Для size = 7 центр начинается с индекса 2 и идёт до 4 включительно
+            int centerStart = (size / 2) - 1;
+            int centerEnd = centerStart + 2;
+
+            // Заполняем центральный квадрат сушей (L)
+            for (int i = centerStart; i <= centerEnd; i++)
+            {
+                for (int j = centerStart; j <= centerEnd; j++)
+                {
+                    matrix[i, j] = 'L';
+                }
+            }
+
+            // Вывод матрицы
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+    }
